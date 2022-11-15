@@ -4,7 +4,7 @@ const withAuth = require('../utils/withAuth');
 const { Post, User, Comment } = require('../models');
 
 
-//dashboard main page. GET ALL route.
+//dashboard main page. GET ALL route= dashboard/
 router.get('/', withAuth, (req,res)=>{
     Post.findAll({
         where:{
@@ -45,7 +45,7 @@ router.get('/', withAuth, (req,res)=>{
 
 });
 
-//edit post route.
+//edit post route = dashboard/edit/:id
 router.get('/edit/:id', withAuth, (req,res)=>{
     Post.findOne({
         where: {
