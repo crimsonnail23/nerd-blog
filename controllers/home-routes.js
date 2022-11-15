@@ -38,3 +38,12 @@ router.get('/', (req,res)=>{
         res.status(500).json(err);
     });
 });
+
+// GET route for a single post.
+router.get('/post/:id', (req,res)=>{
+    Post.findOne({
+        where:{
+            
+        }
+    })
+})
