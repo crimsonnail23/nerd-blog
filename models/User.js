@@ -32,5 +32,14 @@ User.init(
             }
         }    
     },
-    
-)
+    {
+        sequelize,
+        timestamps: false,
+        undercored: true,
+        freezeTableName: true,
+        modelName: 'user'
+    }
+
+);
+
+module.exports = User;
