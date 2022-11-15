@@ -1,2 +1,2 @@
 //import sequelze constrcutor.
-const Sequelize= require('sequelze');
+const Sequelize= require('sequelize');
