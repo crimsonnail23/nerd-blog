@@ -2,18 +2,18 @@ const router = require('express').Router();
 const sequelize = require('../config/connection');
 const { Post, User, Comment } = require('../models');
 
-// this is the '/' endpoint.
+// this is the '/' endpoint. it is the GET ALL route.
 router.get('/', (req,res)=>{
     Post.findAll({
         attributes:[
             'id',
-            'post_url',
+            'post_link',
             'title',
             'created_at'
         ], include:[
             {
                 model: Comment,
-                attributes:['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+                attributes:['id', 'commentBody', 'post_id', 'user_id', 'created_at'],
                 include:{
                     model: User,
                     attributes: ['username']
