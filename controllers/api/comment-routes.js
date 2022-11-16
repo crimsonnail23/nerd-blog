@@ -28,5 +28,24 @@ router.post('/', withAuth, (req, res)=>{
     }
 })
 
+//delete a comment with id, also authenticate with withAuth. route= api/comments/:id
+router.delete('/:id', withAuth,(req,res)=>{
+    Comment.destory({
+        where:{
+            id: req.params.id
+        }
+    })
+    .then(dbCommentData=>{
+        if(!dbCommentData){
+            res.status(404).json({ message: 'no commen with this id'})
+            return;
+        }
+        res.json(dbCommentData)
+    })
+    .catch(err=>{
+        console.log(err);
+        res.status(500).json(err)
+    });
+});
 
 module.exports = router;
