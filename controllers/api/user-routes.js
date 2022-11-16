@@ -129,5 +129,26 @@ router.put('/:id', withAuth, (req,res)=>{
     });
 });
 
+// delete route = api/users/:id
+router.delete('/:id', withAuth, (req,res)=>{
+    
+    User.destroy({
+        where: {
+            id: req.params.id
+        }
+    })
+    .then(dbUserData=>{
+        if(!dbUserData){
+            res.status(404).json({message: 'no userfound with this id'});
+            return;
+        }
+        res.json(dbUserData);
+    })
+    .catch(err=>{
+        console.log(err);
+        res.status(500).json(err);
+    });
+});
+
 
 module.exports = router;
