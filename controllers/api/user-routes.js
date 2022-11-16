@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const withAuth = require('../../utils/auth');
+const withAuth = require('../../utils/withAuth');
 const { User, Post, Comment } = require('../../models');
 
 //get all users. route= /api/users
@@ -46,7 +46,26 @@ router.get('/:id', (req,res)=>{
     .catch(err=>{
         console.log(err);
         res.status(500).json(err);
+    });
+});
+
+//POST route= api/user. this piece of code will create a new user.
+router.post('/', withAuth, (req,res)=>{
+    // expects uesername: learnatine, email: learnatine@email.com, password: password.
+    User.create({
+        username: req.body.username,
+        email: req.body.email,
+        password: req.body.password
     })
-})    
+    .then(dbUserData =>{
+        req.session.save(()=>{
+            req.session.user_id = dbUserData.id,
+            req.session.username = dbUserData.username,
+            req.session.loggedIn = true;
+
+            res.json(dbUserData);
+        });
+    })
+});
 
 module.exports = router;
