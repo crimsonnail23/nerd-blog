@@ -9,11 +9,17 @@
 <body>
     <div>
         <header>
-            {{#if loggedIn}}
-            <a></a>
-            {{else}}
-            <a href="/login">login</a>
-            {{/if}}
+            <h1>
+                <a href="/">nerd blog</a>
+            </h1>
+            </header>
+                <nav>
+                    {{#if loggedIn}}
+                    <a></a>
+                    {{else}}
+                    <a href="/login">login</a>
+                    {{/if}}
+                </nav>
         </header>
         <main>
             {{body}}
