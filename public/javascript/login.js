@@ -19,6 +19,10 @@ async function signupFormHandler(event){
          });
          if (response.ok){
             console.log('success');
+            //following code should clear the form.
+            document.querySelector('#username-signup').value=''
+            document.querySelector('#email-signup').value=''
+            document.querySelector('#password-signup').value=''
         } else {
             alert(response.statusText);
         } 
