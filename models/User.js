@@ -40,6 +40,14 @@ User.init(
             }
         }    
     },
+
+    {
+        sequelize: sequelize,
+        timestamps: false,
+        undercored: true,
+        freezeTableName: true,
+        modelName: 'user'
+    },
     {
         hooks: {
             async beforeCreate(newUserData){
@@ -52,13 +60,6 @@ User.init(
             }
         }
     },
-    {
-        sequelize: sequelize,
-        timestamps: false,
-        undercored: true,
-        freezeTableName: true,
-        modelName: 'user'
-    }
 
 );
 
