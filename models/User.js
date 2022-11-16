@@ -53,7 +53,7 @@ User.init(
         }
     },
     {
-        sequelize,
+        sequelize: sequelize,
         timestamps: false,
         undercored: true,
         freezeTableName: true,
