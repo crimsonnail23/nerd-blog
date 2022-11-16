@@ -40,6 +40,7 @@ router.get('/:id', (req,res)=>{
     .then(dbUserData=>{
         if(!dbUserData){
             res.status(404).json({ message: 'no user with that id, sorry'})
+            return;
         }
         res.json(dbUserData)
     })

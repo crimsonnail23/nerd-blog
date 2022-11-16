@@ -61,4 +61,16 @@ router.get('/:id', (req,res)=>{
           }
         ]
       })
-})
+      .then(dbPostData=>{
+        //if there's no post with the id, then throw this meessage.
+        if(!dbPostData){
+            res.status(404).json({ message: 'no post with this id.'})
+            return;
+        }
+        res.json(dbPostData);
+      })
+      .catch(err=>{
+        console.log(err);
+        res.status(500).json(err);
+      });
+});
