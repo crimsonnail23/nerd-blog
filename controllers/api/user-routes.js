@@ -68,7 +68,7 @@ router.post('/', withAuth, (req,res)=>{
     })
 });
 
-//login route = api/login
+//login route = api/user/login
 router.post('/login', (req,res)=>{
     User.findOne({
         where:{
@@ -106,6 +106,27 @@ router.post('/logout',(req,res)=>{
     else{
         res.status(404).end();
     }
+});
+
+// PUT route = api/users/:id
+router.put('/:id', withAuth, (req,res)=>{
+    User.update(req.body,{
+        individualHooks: true,
+        where:{
+            id: req.params.id
+        }
+    })
+    .then(dbUserData=>{
+        if(!dbUserData[0]){
+            res.status(404).json({ message:'no user found with this id' });
+            return;
+        }
+        res.json(dbUserData);
+    })
+    .catch(err=>{
+        console.log(err);
+        res.status(500).json(err);
+    });
 });
 
 
