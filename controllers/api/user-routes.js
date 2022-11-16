@@ -29,7 +29,7 @@ router.get('/:id', (req,res)=>{
             },
             {
                 model: Comment,
-                attributes: ['id', 'commentBody', 'created_at'],
+                attributes: ['id', 'comment_body', 'created_at'],
                 include:{
                     model: Post,
                     attibutes: ['title']
@@ -51,7 +51,6 @@ router.get('/:id', (req,res)=>{
 
 //POST route= api/user. this piece of code will create a new user.
 router.post('/', withAuth, (req,res)=>{
-    // expects uesername: learnatine, email: learnatine@email.com, password: password.
     User.create({
         username: req.body.username,
         email: req.body.email,

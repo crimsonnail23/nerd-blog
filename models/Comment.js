@@ -11,7 +11,7 @@ Comment.init(
             primaryKey: true,
             autoIncrement: true 
         },
-        commentBody:{
+        comment_body:{
             type: DataTypes.STRING,
             allowNull: false,
             //following code will require a minimum number of characters for all comments.
