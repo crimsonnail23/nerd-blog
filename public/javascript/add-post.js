@@ -1,15 +1,16 @@
 async function newPostHandler(event){
     event.preventDefault();
     const title = document.querySelector('input[name="post-title"]').value;
+    console.log(title);
     const post_link = document.getElementById('post-link').value;
 
     const response = await fetch('/api/posts', {
         method: 'POST',
         body: JSON.stringify({
-            title,
-            post_link
+            title: title,
+            post_link: post_link
         }),
-        header:{
+        headers:{
             'Content-Type': 'application/json'
         }
     });

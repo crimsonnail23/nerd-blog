@@ -77,9 +77,10 @@ router.get('/:id', (req,res)=>{
 
 //create post. route= api/posts need to be logged in.
 router.post('/', withAuth, (req, res) => {
+    console.log('ln 80 ', req.body)
     Post.create({
       title: req.body.title,
-      post_url: req.body.post_url,
+      post_link: req.body.post_link,
       user_id: req.session.user_id
     })
       .then(dbPostData => res.json(dbPostData))

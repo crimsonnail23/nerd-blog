@@ -70,6 +70,7 @@ router.post('/', (req,res)=>{
 
 //login route = api/user/login
 router.post('/login', (req,res)=>{
+    console.log('ln 70', req.body);
     User.findOne({
         where:{
             email: req.body.email
