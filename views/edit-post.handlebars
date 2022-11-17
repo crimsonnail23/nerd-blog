@@ -4,7 +4,14 @@
     <form class="edit-post-form">
     <div>
       <input name="post-title" type="text" value="{{post.title}}" />
-      <span>({{post.post_link}})</span>
+      <input name="post-link" type="text" value="{{post.post_link}}" />
     </div>
+    <button type="submit">Save post</button>
+    <button type="button" class="delete-post-btn">Delete post</button>
     </form>
 </article>
+
+{{> comment-list post.comments}}
+<script src="/javascript/edit-post.js"></script>
+<script src="/javascript/delete-post.js"></script>
+<script src="/javascript/comment.js"></script>
