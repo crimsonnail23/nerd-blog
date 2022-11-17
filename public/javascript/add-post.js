@@ -1,7 +1,7 @@
 async function newPostHandler(event){
     event.preventDefault();
+    //get data from specific html elements. and then use that data in fetch request.
     const title = document.querySelector('input[name="post-title"]').value;
-    console.log(title);
     const post_link = document.getElementById('post-link').value;
 
     const response = await fetch('/api/posts', {

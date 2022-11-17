@@ -1,6 +1,6 @@
 async function editPost(event){
     event.preventDefault();
-
+    //get data from specific html elements. and then use that data in fetch request.
     const title = document.querySelector('input[name="post-title"]').value.trim();
     const post_link = document.querySelector('input[name="post-link"]').value.trim();
     console.log('ln 6 ',post_link)
