@@ -116,6 +116,7 @@ Post.update(
     });
 });
 
+//will delete a post if you're logged in.
 router.delete('/:id', withAuth, (req, res) => {
 console.log('id', req.params.id);
 Post.destroy({

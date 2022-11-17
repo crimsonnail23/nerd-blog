@@ -2,7 +2,7 @@ const router = require('express').Router();
 const withAuth = require('../../utils/withAuth');
 const { User, Post, Comment } = require('../../models');
 
-//get all users. route= /api/users
+//get all users. route= /api/users used for testing.
 router.get('/', (req,res)=>{
     //use findAll method with User model.
     User.findAll({
@@ -15,7 +15,7 @@ router.get('/', (req,res)=>{
         });
 });
 
-//GET sinle user by id. Route= /api/users/:id
+//GET sinle user by id. Route= /api/users/:id used for testing.
 router.get('/:id', (req,res)=>{
     User.findOne({
         attributes: { exclude: ['password'] },

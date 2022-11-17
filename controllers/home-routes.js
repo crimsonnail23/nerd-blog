@@ -28,6 +28,7 @@ router.get('/', (req,res)=>{
     .then(dbPostData =>{
         //pass single post into the homepage template.
         const posts = dbPostData.map(post=>post.get({ plain: true}))
+        //will render the template with information passed in the posts variable.
         res.render('homepage', {
             posts,
             loggedIn: req.session.loggedIn
@@ -71,6 +72,7 @@ router.get('/post/:id', (req,res)=>{
             res.status(404).json({ message: 'no post found with this id'})
         }
         const post = dbPostData.get({ plain: true });
+        //will render the template with information passed in the posts variable.
         res.render('single-post',{
             post,
             loggedIn: req.session.loggedIn
